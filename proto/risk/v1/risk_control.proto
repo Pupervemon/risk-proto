@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package risk.v1;
+
+// 【重要】这里的路径必须匹配：你的go module名 + /gen/go/risk/v1
+// 假设上面你用的是 github.com/jack/risk-proto
+option go_package = "github.com/Pupervemon/risk-proto/gen/go/risk/v1";
+
+option java_package = "com.yourname.risk.v1";
+option java_outer_classname = "RiskProto";
+
+// --- 服务定义 ---
+service RiskControlService {
+  // 综合风控检测（黑名单、频控）
+  rpc Check (CheckRequest) returns (CheckResponse);
+
+  // 事件上报（防暴力破解）
+  rpc ReportEvent (ReportEventRequest) returns (ReportEventResponse);
+  
+  // 添加黑名单（管理端用）
+  rpc AddBlacklist (AddBlacklistRequest) returns (AddBlacklistResponse);
+}
+
+// --- 枚举 ---
+enum Scene {
+  SCENE_UNKNOWN = 0;
+  SCENE_LOGIN = 1;
+  SCENE_REGISTER = 2;
+  SCENE_PAYMENT = 3;
+}
+
+enum Action {
+  ACTION_PASS = 0;      // 通过
+  ACTION_REJECT = 1;    // 拒绝
+  ACTION_VERIFY = 2;    // 需验证
+}
+
+//消息
+message CheckRequest {
+  string req_id = 1;
+  Scene scene = 2;
+  string ip = 3;
+  string user_id = 4;
+  string phone_number = 5;
+  string device_id = 6;
+  int64 timestamp = 7;
+}
+
+message CheckResponse {
+  Action action = 1;
+  string reason = 2;
+  string risk_id = 3;
+}
+
+message ReportEventRequest {
+  string req_id = 1;
+  Scene scene = 2;
+  string ip = 3;
+  string user_id = 4;
+  bool is_success = 5; // 比如密码输对了没
+  string extra_info = 6;
+}
+
+message ReportEventResponse {
+  bool received = 1;
+}
+
+message AddBlacklistRequest {
+  enum BlacklistType {
+    TYPE_IP = 0;
+    TYPE_USER_ID = 1;
+    TYPE_DEVICE = 2;
+  }
+  BlacklistType type = 1;
+  string value = 2;
+  string reason = 3;
+  int64 expire_at = 4; 
+}
+
+message AddBlacklistResponse {
+  bool success = 1;
+}
