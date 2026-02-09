@@ -2,11 +2,9 @@ syntax = "proto3";
 
 package risk.v1;
 
-// 【重要】这里的路径必须匹配：你的go module名 + /gen/go/risk/v1
-// 假设上面你用的是 github.com/jack/risk-proto
 option go_package = "github.com/Pupervemon/risk-proto/gen/go/risk/v1";
 
-option java_package = "com.yourname.risk.v1";
+option java_package = "com.users.risk.v1";
 option java_outer_classname = "RiskProto";
 
 // --- 服务定义 ---
@@ -19,6 +17,12 @@ service RiskControlService {
   
   // 添加黑名单（管理端用）
   rpc AddBlacklist (AddBlacklistRequest) returns (AddBlacklistResponse);
+
+  // 在线自测
+  rpc OnlineSelfTest (OnlineSelfTestRequest) returns (OnlineSelfTestResponse);
+
+  // 提交题目判题
+  rpc JudgeSubmission (JudgeSubmissionRequest) returns (JudgeSubmissionResponse);
 }
 
 // --- 枚举 ---
@@ -79,4 +83,28 @@ message AddBlacklistRequest {
 
 message AddBlacklistResponse {
   bool success = 1;
+}
+
+message OnlineSelfTestRequest {
+  string req_id = 1;
+  string user_id = 2;
+  string payload = 3;
+  int64 timestamp = 4;
+}
+
+message OnlineSelfTestResponse {
+  bool accepted = 1;
+  string reason = 2;
+}
+
+message JudgeSubmissionRequest {
+  string req_id = 1;
+  string user_id = 2;
+  string answer = 3;
+  int64 timestamp = 4;
+}
+
+message JudgeSubmissionResponse {
+  bool accepted = 1;
+  string reason = 2;
 }

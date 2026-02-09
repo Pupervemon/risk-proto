@@ -565,6 +565,246 @@ func (x *AddBlacklistResponse) GetSuccess() bool {
 	return false
 }
 
+type OnlineSelfTestRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ReqId         string                 `protobuf:"bytes,1,opt,name=req_id,json=reqId,proto3" json:"req_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Payload       string                 `protobuf:"bytes,3,opt,name=payload,proto3" json:"payload,omitempty"`
+	Timestamp     int64                  `protobuf:"varint,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OnlineSelfTestRequest) Reset() {
+	*x = OnlineSelfTestRequest{}
+	mi := &file_risk_v1_risk_control_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OnlineSelfTestRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OnlineSelfTestRequest) ProtoMessage() {}
+
+func (x *OnlineSelfTestRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_risk_v1_risk_control_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OnlineSelfTestRequest.ProtoReflect.Descriptor instead.
+func (*OnlineSelfTestRequest) Descriptor() ([]byte, []int) {
+	return file_risk_v1_risk_control_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *OnlineSelfTestRequest) GetReqId() string {
+	if x != nil {
+		return x.ReqId
+	}
+	return ""
+}
+
+func (x *OnlineSelfTestRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *OnlineSelfTestRequest) GetPayload() string {
+	if x != nil {
+		return x.Payload
+	}
+	return ""
+}
+
+func (x *OnlineSelfTestRequest) GetTimestamp() int64 {
+	if x != nil {
+		return x.Timestamp
+	}
+	return 0
+}
+
+type OnlineSelfTestResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Accepted      bool                   `protobuf:"varint,1,opt,name=accepted,proto3" json:"accepted,omitempty"`
+	Reason        string                 `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OnlineSelfTestResponse) Reset() {
+	*x = OnlineSelfTestResponse{}
+	mi := &file_risk_v1_risk_control_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OnlineSelfTestResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OnlineSelfTestResponse) ProtoMessage() {}
+
+func (x *OnlineSelfTestResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_risk_v1_risk_control_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OnlineSelfTestResponse.ProtoReflect.Descriptor instead.
+func (*OnlineSelfTestResponse) Descriptor() ([]byte, []int) {
+	return file_risk_v1_risk_control_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *OnlineSelfTestResponse) GetAccepted() bool {
+	if x != nil {
+		return x.Accepted
+	}
+	return false
+}
+
+func (x *OnlineSelfTestResponse) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type JudgeSubmissionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ReqId         string                 `protobuf:"bytes,1,opt,name=req_id,json=reqId,proto3" json:"req_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Answer        string                 `protobuf:"bytes,3,opt,name=answer,proto3" json:"answer,omitempty"`
+	Timestamp     int64                  `protobuf:"varint,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *JudgeSubmissionRequest) Reset() {
+	*x = JudgeSubmissionRequest{}
+	mi := &file_risk_v1_risk_control_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *JudgeSubmissionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*JudgeSubmissionRequest) ProtoMessage() {}
+
+func (x *JudgeSubmissionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_risk_v1_risk_control_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use JudgeSubmissionRequest.ProtoReflect.Descriptor instead.
+func (*JudgeSubmissionRequest) Descriptor() ([]byte, []int) {
+	return file_risk_v1_risk_control_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *JudgeSubmissionRequest) GetReqId() string {
+	if x != nil {
+		return x.ReqId
+	}
+	return ""
+}
+
+func (x *JudgeSubmissionRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *JudgeSubmissionRequest) GetAnswer() string {
+	if x != nil {
+		return x.Answer
+	}
+	return ""
+}
+
+func (x *JudgeSubmissionRequest) GetTimestamp() int64 {
+	if x != nil {
+		return x.Timestamp
+	}
+	return 0
+}
+
+type JudgeSubmissionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Accepted      bool                   `protobuf:"varint,1,opt,name=accepted,proto3" json:"accepted,omitempty"`
+	Reason        string                 `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *JudgeSubmissionResponse) Reset() {
+	*x = JudgeSubmissionResponse{}
+	mi := &file_risk_v1_risk_control_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *JudgeSubmissionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*JudgeSubmissionResponse) ProtoMessage() {}
+
+func (x *JudgeSubmissionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_risk_v1_risk_control_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use JudgeSubmissionResponse.ProtoReflect.Descriptor instead.
+func (*JudgeSubmissionResponse) Descriptor() ([]byte, []int) {
+	return file_risk_v1_risk_control_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *JudgeSubmissionResponse) GetAccepted() bool {
+	if x != nil {
+		return x.Accepted
+	}
+	return false
+}
+
+func (x *JudgeSubmissionResponse) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
 var File_risk_v1_risk_control_proto protoreflect.FileDescriptor
 
 const file_risk_v1_risk_control_proto_rawDesc = "" +
@@ -603,7 +843,23 @@ const file_risk_v1_risk_control_proto_rawDesc = "" +
 	"\fTYPE_USER_ID\x10\x01\x12\x0f\n" +
 	"\vTYPE_DEVICE\x10\x02\"0\n" +
 	"\x14AddBlacklistResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess*R\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x7f\n" +
+	"\x15OnlineSelfTestRequest\x12\x15\n" +
+	"\x06req_id\x18\x01 \x01(\tR\x05reqId\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x18\n" +
+	"\apayload\x18\x03 \x01(\tR\apayload\x12\x1c\n" +
+	"\ttimestamp\x18\x04 \x01(\x03R\ttimestamp\"L\n" +
+	"\x16OnlineSelfTestResponse\x12\x1a\n" +
+	"\baccepted\x18\x01 \x01(\bR\baccepted\x12\x16\n" +
+	"\x06reason\x18\x02 \x01(\tR\x06reason\"~\n" +
+	"\x16JudgeSubmissionRequest\x12\x15\n" +
+	"\x06req_id\x18\x01 \x01(\tR\x05reqId\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x16\n" +
+	"\x06answer\x18\x03 \x01(\tR\x06answer\x12\x1c\n" +
+	"\ttimestamp\x18\x04 \x01(\x03R\ttimestamp\"M\n" +
+	"\x17JudgeSubmissionResponse\x12\x1a\n" +
+	"\baccepted\x18\x01 \x01(\bR\baccepted\x12\x16\n" +
+	"\x06reason\x18\x02 \x01(\tR\x06reason*R\n" +
 	"\x05Scene\x12\x11\n" +
 	"\rSCENE_UNKNOWN\x10\x00\x12\x0f\n" +
 	"\vSCENE_LOGIN\x10\x01\x12\x12\n" +
@@ -612,12 +868,14 @@ const file_risk_v1_risk_control_proto_rawDesc = "" +
 	"\x06Action\x12\x0f\n" +
 	"\vACTION_PASS\x10\x00\x12\x11\n" +
 	"\rACTION_REJECT\x10\x01\x12\x11\n" +
-	"\rACTION_VERIFY\x10\x022\xe3\x01\n" +
+	"\rACTION_VERIFY\x10\x022\x8c\x03\n" +
 	"\x12RiskControlService\x126\n" +
 	"\x05Check\x12\x15.risk.v1.CheckRequest\x1a\x16.risk.v1.CheckResponse\x12H\n" +
 	"\vReportEvent\x12\x1b.risk.v1.ReportEventRequest\x1a\x1c.risk.v1.ReportEventResponse\x12K\n" +
-	"\fAddBlacklist\x12\x1c.risk.v1.AddBlacklistRequest\x1a\x1d.risk.v1.AddBlacklistResponseBR\n" +
-	"\x14com.yourname.risk.v1B\tRiskProtoZ/github.com/Pupervemon/risk-proto/gen/go/risk/v1b\x06proto3"
+	"\fAddBlacklist\x12\x1c.risk.v1.AddBlacklistRequest\x1a\x1d.risk.v1.AddBlacklistResponse\x12Q\n" +
+	"\x0eOnlineSelfTest\x12\x1e.risk.v1.OnlineSelfTestRequest\x1a\x1f.risk.v1.OnlineSelfTestResponse\x12T\n" +
+	"\x0fJudgeSubmission\x12\x1f.risk.v1.JudgeSubmissionRequest\x1a .risk.v1.JudgeSubmissionResponseBO\n" +
+	"\x11com.users.risk.v1B\tRiskProtoZ/github.com/Pupervemon/risk-proto/gen/go/risk/v1b\x06proto3"
 
 var (
 	file_risk_v1_risk_control_proto_rawDescOnce sync.Once
@@ -632,7 +890,7 @@ func file_risk_v1_risk_control_proto_rawDescGZIP() []byte {
 }
 
 var file_risk_v1_risk_control_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_risk_v1_risk_control_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_risk_v1_risk_control_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_risk_v1_risk_control_proto_goTypes = []any{
 	(Scene)(0),                             // 0: risk.v1.Scene
 	(Action)(0),                            // 1: risk.v1.Action
@@ -643,23 +901,31 @@ var file_risk_v1_risk_control_proto_goTypes = []any{
 	(*ReportEventResponse)(nil),            // 6: risk.v1.ReportEventResponse
 	(*AddBlacklistRequest)(nil),            // 7: risk.v1.AddBlacklistRequest
 	(*AddBlacklistResponse)(nil),           // 8: risk.v1.AddBlacklistResponse
+	(*OnlineSelfTestRequest)(nil),          // 9: risk.v1.OnlineSelfTestRequest
+	(*OnlineSelfTestResponse)(nil),         // 10: risk.v1.OnlineSelfTestResponse
+	(*JudgeSubmissionRequest)(nil),         // 11: risk.v1.JudgeSubmissionRequest
+	(*JudgeSubmissionResponse)(nil),        // 12: risk.v1.JudgeSubmissionResponse
 }
 var file_risk_v1_risk_control_proto_depIdxs = []int32{
-	0, // 0: risk.v1.CheckRequest.scene:type_name -> risk.v1.Scene
-	1, // 1: risk.v1.CheckResponse.action:type_name -> risk.v1.Action
-	0, // 2: risk.v1.ReportEventRequest.scene:type_name -> risk.v1.Scene
-	2, // 3: risk.v1.AddBlacklistRequest.type:type_name -> risk.v1.AddBlacklistRequest.BlacklistType
-	3, // 4: risk.v1.RiskControlService.Check:input_type -> risk.v1.CheckRequest
-	5, // 5: risk.v1.RiskControlService.ReportEvent:input_type -> risk.v1.ReportEventRequest
-	7, // 6: risk.v1.RiskControlService.AddBlacklist:input_type -> risk.v1.AddBlacklistRequest
-	4, // 7: risk.v1.RiskControlService.Check:output_type -> risk.v1.CheckResponse
-	6, // 8: risk.v1.RiskControlService.ReportEvent:output_type -> risk.v1.ReportEventResponse
-	8, // 9: risk.v1.RiskControlService.AddBlacklist:output_type -> risk.v1.AddBlacklistResponse
-	7, // [7:10] is the sub-list for method output_type
-	4, // [4:7] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	0,  // 0: risk.v1.CheckRequest.scene:type_name -> risk.v1.Scene
+	1,  // 1: risk.v1.CheckResponse.action:type_name -> risk.v1.Action
+	0,  // 2: risk.v1.ReportEventRequest.scene:type_name -> risk.v1.Scene
+	2,  // 3: risk.v1.AddBlacklistRequest.type:type_name -> risk.v1.AddBlacklistRequest.BlacklistType
+	3,  // 4: risk.v1.RiskControlService.Check:input_type -> risk.v1.CheckRequest
+	5,  // 5: risk.v1.RiskControlService.ReportEvent:input_type -> risk.v1.ReportEventRequest
+	7,  // 6: risk.v1.RiskControlService.AddBlacklist:input_type -> risk.v1.AddBlacklistRequest
+	9,  // 7: risk.v1.RiskControlService.OnlineSelfTest:input_type -> risk.v1.OnlineSelfTestRequest
+	11, // 8: risk.v1.RiskControlService.JudgeSubmission:input_type -> risk.v1.JudgeSubmissionRequest
+	4,  // 9: risk.v1.RiskControlService.Check:output_type -> risk.v1.CheckResponse
+	6,  // 10: risk.v1.RiskControlService.ReportEvent:output_type -> risk.v1.ReportEventResponse
+	8,  // 11: risk.v1.RiskControlService.AddBlacklist:output_type -> risk.v1.AddBlacklistResponse
+	10, // 12: risk.v1.RiskControlService.OnlineSelfTest:output_type -> risk.v1.OnlineSelfTestResponse
+	12, // 13: risk.v1.RiskControlService.JudgeSubmission:output_type -> risk.v1.JudgeSubmissionResponse
+	9,  // [9:14] is the sub-list for method output_type
+	4,  // [4:9] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_risk_v1_risk_control_proto_init() }
@@ -673,7 +939,7 @@ func file_risk_v1_risk_control_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_risk_v1_risk_control_proto_rawDesc), len(file_risk_v1_risk_control_proto_rawDesc)),
 			NumEnums:      3,
-			NumMessages:   6,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

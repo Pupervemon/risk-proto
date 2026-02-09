@@ -19,9 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	RiskControlService_Check_FullMethodName        = "/risk.v1.RiskControlService/Check"
-	RiskControlService_ReportEvent_FullMethodName  = "/risk.v1.RiskControlService/ReportEvent"
-	RiskControlService_AddBlacklist_FullMethodName = "/risk.v1.RiskControlService/AddBlacklist"
+	RiskControlService_Check_FullMethodName           = "/risk.v1.RiskControlService/Check"
+	RiskControlService_ReportEvent_FullMethodName     = "/risk.v1.RiskControlService/ReportEvent"
+	RiskControlService_AddBlacklist_FullMethodName    = "/risk.v1.RiskControlService/AddBlacklist"
+	RiskControlService_OnlineSelfTest_FullMethodName  = "/risk.v1.RiskControlService/OnlineSelfTest"
+	RiskControlService_JudgeSubmission_FullMethodName = "/risk.v1.RiskControlService/JudgeSubmission"
 )
 
 // RiskControlServiceClient is the client API for RiskControlService service.
@@ -36,6 +38,10 @@ type RiskControlServiceClient interface {
 	ReportEvent(ctx context.Context, in *ReportEventRequest, opts ...grpc.CallOption) (*ReportEventResponse, error)
 	// 添加黑名单（管理端用）
 	AddBlacklist(ctx context.Context, in *AddBlacklistRequest, opts ...grpc.CallOption) (*AddBlacklistResponse, error)
+	// 在线自测
+	OnlineSelfTest(ctx context.Context, in *OnlineSelfTestRequest, opts ...grpc.CallOption) (*OnlineSelfTestResponse, error)
+	// 提交题目判题
+	JudgeSubmission(ctx context.Context, in *JudgeSubmissionRequest, opts ...grpc.CallOption) (*JudgeSubmissionResponse, error)
 }
 
 type riskControlServiceClient struct {
@@ -76,6 +82,26 @@ func (c *riskControlServiceClient) AddBlacklist(ctx context.Context, in *AddBlac
 	return out, nil
 }
 
+func (c *riskControlServiceClient) OnlineSelfTest(ctx context.Context, in *OnlineSelfTestRequest, opts ...grpc.CallOption) (*OnlineSelfTestResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(OnlineSelfTestResponse)
+	err := c.cc.Invoke(ctx, RiskControlService_OnlineSelfTest_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *riskControlServiceClient) JudgeSubmission(ctx context.Context, in *JudgeSubmissionRequest, opts ...grpc.CallOption) (*JudgeSubmissionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(JudgeSubmissionResponse)
+	err := c.cc.Invoke(ctx, RiskControlService_JudgeSubmission_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RiskControlServiceServer is the server API for RiskControlService service.
 // All implementations must embed UnimplementedRiskControlServiceServer
 // for forward compatibility.
@@ -88,6 +114,10 @@ type RiskControlServiceServer interface {
 	ReportEvent(context.Context, *ReportEventRequest) (*ReportEventResponse, error)
 	// 添加黑名单（管理端用）
 	AddBlacklist(context.Context, *AddBlacklistRequest) (*AddBlacklistResponse, error)
+	// 在线自测
+	OnlineSelfTest(context.Context, *OnlineSelfTestRequest) (*OnlineSelfTestResponse, error)
+	// 提交题目判题
+	JudgeSubmission(context.Context, *JudgeSubmissionRequest) (*JudgeSubmissionResponse, error)
 	mustEmbedUnimplementedRiskControlServiceServer()
 }
 
@@ -106,6 +136,12 @@ func (UnimplementedRiskControlServiceServer) ReportEvent(context.Context, *Repor
 }
 func (UnimplementedRiskControlServiceServer) AddBlacklist(context.Context, *AddBlacklistRequest) (*AddBlacklistResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AddBlacklist not implemented")
+}
+func (UnimplementedRiskControlServiceServer) OnlineSelfTest(context.Context, *OnlineSelfTestRequest) (*OnlineSelfTestResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method OnlineSelfTest not implemented")
+}
+func (UnimplementedRiskControlServiceServer) JudgeSubmission(context.Context, *JudgeSubmissionRequest) (*JudgeSubmissionResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method JudgeSubmission not implemented")
 }
 func (UnimplementedRiskControlServiceServer) mustEmbedUnimplementedRiskControlServiceServer() {}
 func (UnimplementedRiskControlServiceServer) testEmbeddedByValue()                            {}
@@ -182,6 +218,42 @@ func _RiskControlService_AddBlacklist_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RiskControlService_OnlineSelfTest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(OnlineSelfTestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RiskControlServiceServer).OnlineSelfTest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RiskControlService_OnlineSelfTest_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RiskControlServiceServer).OnlineSelfTest(ctx, req.(*OnlineSelfTestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RiskControlService_JudgeSubmission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(JudgeSubmissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RiskControlServiceServer).JudgeSubmission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RiskControlService_JudgeSubmission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RiskControlServiceServer).JudgeSubmission(ctx, req.(*JudgeSubmissionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RiskControlService_ServiceDesc is the grpc.ServiceDesc for RiskControlService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -200,6 +272,14 @@ var RiskControlService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddBlacklist",
 			Handler:    _RiskControlService_AddBlacklist_Handler,
+		},
+		{
+			MethodName: "OnlineSelfTest",
+			Handler:    _RiskControlService_OnlineSelfTest_Handler,
+		},
+		{
+			MethodName: "JudgeSubmission",
+			Handler:    _RiskControlService_JudgeSubmission_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
